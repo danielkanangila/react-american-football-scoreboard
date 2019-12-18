@@ -1,9 +1,7 @@
 //TODO: STEP 1 - Import the useState hook.
 import React, { useState } from "react";
 import "./App.css";
-import BottomRow from "./BottomRow";
-import Team from "./components/Team";
-import Timer from "./components/Timer";
+import Scoreboard from "./components/Scoreboard";
 import ActionButtons from "./components/ActionButtons";
 
 function App() {
@@ -15,10 +13,14 @@ function App() {
     const from =  e.target.getAttribute('class');
     const points = from.includes('touchdown') ? 7 : 3;
     let newScore = 0;
+
     if (from.includes('home')) {
+
       newScore = homeScore + points;
       setHomeScore(newScore)
+
     } else if (from.includes('away')) {
+      
       newScore = awayScore + points;
       setAwayScore(newScore);
     }
@@ -26,15 +28,8 @@ function App() {
 
   return (
     <div className="container">
-      <section className="scoreboard">
-        <div className="topRow">
-          <Team name="Lions" zone="home" score={homeScore} />
-          <Timer />
-          <Team name="Tigers" zone="away" score={awayScore} />
-        </div>
-        <BottomRow />
-      </section>
-      <ActionButtons handleScore={handleScore} />
+      <Scoreboard homeScore={ homeScore } awayScore={ awayScore } />
+      <ActionButtons handleScore={ handleScore } />
     </div>
   );
 }
