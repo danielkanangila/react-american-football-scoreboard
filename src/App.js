@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import "./App.css";
 import BottomRow from "./BottomRow";
 import Team from "./components/Team";
+import Timer from "./components/Timer";
 import ActionButtons from "./components/ActionButtons";
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
       <section className="scoreboard">
         <div className="topRow">
           <Team name="Lions" zone="home" score={homeScore} />
-          <div className="timer">00:03</div>
+          <Timer />
           <Team name="Tigers" zone="away" score={awayScore} />
         </div>
         <BottomRow />
